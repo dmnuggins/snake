@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5gm2ubukyvup"]
+[gd_scene load_steps=4 format=3 uid="uid://5gm2ubukyvup"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_gl3co"]
 [ext_resource type="PackedScene" uid="uid://vp1h3h0chf40" path="res://scenes/snake.tscn" id="2_aoqhn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a2uht"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gl3co")
@@ -9,3 +11,27 @@ script = ExtResource("1_gl3co")
 [node name="Snake" parent="." instance=ExtResource("2_aoqhn")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -600)
+rotation = -3.1415
+shape = SubResource("WorldBoundaryShape2D_a2uht")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_a2uht")
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-400, -300)
+rotation = 1.56962
+shape = SubResource("WorldBoundaryShape2D_a2uht")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(400, -300)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_a2uht")
