@@ -9,29 +9,31 @@
 script = ExtResource("1_gl3co")
 
 [node name="Snake" parent="." instance=ExtResource("2_aoqhn")]
+position = Vector2(-400, -300)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="MapWalls" type="StaticBody2D" parent="."]
 position = Vector2(0, 300)
 
-[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="TopWall" type="CollisionShape2D" parent="MapWalls"]
 position = Vector2(0, -600)
-rotation = -3.1415
+rotation = -3.14201
 shape = SubResource("WorldBoundaryShape2D_a2uht")
 
-[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="BottomWall" type="CollisionShape2D" parent="MapWalls"]
+rotation = -0.000504555
 shape = SubResource("WorldBoundaryShape2D_a2uht")
 
-[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="LeftWall" type="CollisionShape2D" parent="MapWalls"]
 position = Vector2(-400, -300)
-rotation = 1.56962
+rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_a2uht")
 
-[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="RightWall" type="CollisionShape2D" parent="MapWalls"]
 position = Vector2(400, -300)
-rotation = -1.5708
+rotation = -1.5713
 shape = SubResource("WorldBoundaryShape2D_a2uht")
