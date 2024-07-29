@@ -1,21 +1,21 @@
 extends CharacterBody2D
 
-@export var speed = 100.0
+@export var speed = 50.0
 
 func _physics_process(delta):
 	
 	# Player will move in the direction of the respective action pressed
 	if Input.is_action_pressed("up") && checkAlignment(position):
-		velocity.y -= 1
+		velocity.y = -1
 		velocity.x = 0
 	elif Input.is_action_pressed("down") && checkAlignment(position):
-		velocity.y += 1
+		velocity.y = 1
 		velocity.x = 0
 	elif Input.is_action_pressed("left") && checkAlignment(position):
-		velocity.x -= 1
+		velocity.x = -1
 		velocity.y = 0
 	elif Input.is_action_pressed("right") && checkAlignment(position):
-		velocity.x += 1
+		velocity.x = 1
 		velocity.y = 0
 	
 	# Sets the player velocity
