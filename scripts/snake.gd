@@ -2,21 +2,38 @@ extends CharacterBody2D
 
 @export var speed = 50.0
 
+enum MoveType {
+	VERTICAL,
+	HORIZONTAL
+}
+
+var inputs = {
+	"right": Vector2.RIGHT,
+	"left": Vector2.LEFT,
+	"up": Vector2.UP,
+	"down": Vector2.DOWN
+}
+
+var current_direction
+var next_direction
+
 func _physics_process(delta):
 	
 	# Player will move in the direction of the respective action pressed
-	if Input.is_action_pressed("up") && checkAlignment(position):
-		velocity.y = -1
-		velocity.x = 0
-	elif Input.is_action_pressed("down") && checkAlignment(position):
-		velocity.y = 1
-		velocity.x = 0
-	elif Input.is_action_pressed("left") && checkAlignment(position):
-		velocity.x = -1
-		velocity.y = 0
-	elif Input.is_action_pressed("right") && checkAlignment(position):
-		velocity.x = 1
-		velocity.y = 0
+	if Input.is_action_pressed("up") && checkAlignment(position) && (current_direction != MoveType.VERTICAL):
+		velocity = Vector2(0,-1)
+		current_direction = MoveType.VERTICAL
+	elif Input.is_action_pressed("down") && checkAlignment(position) && (current_direction != MoveType.VERTICAL):
+		velocity = Vector2(0,1)
+		current_direction = MoveType.VERTICAL
+	elif Input.is_action_pressed("left") && checkAlignment(position) && (current_direction != MoveType.HORIZONTAL):
+		velocity = Vector2(-1,0)
+		current_direction = MoveType.HORIZONTAL
+	elif Input.is_action_pressed("right") && checkAlignment(position) && (current_direction != MoveType.HORIZONTAL):
+		velocity = Vector2(1,0)
+		current_direction = MoveType.HORIZONTAL
+		
+	# When aligned check here, then set velocity with queued action
 	
 	# Sets the player velocity
 	velocity = velocity.normalized() * speed * delta
@@ -29,6 +46,10 @@ func _physics_process(delta):
 	if checkAlignment(position):
 		print(position)
 
+# Changes the direction of the snake if aligned
+func changeDirection():
+	pass
+
 # Check if player is aligned with grid given current position and square size
 func checkAlignment(position):
 	var x = int(position.x)
@@ -37,3 +58,5 @@ func checkAlignment(position):
 	if (x % 20 == 0) && (y % 20 == 0):
 		return true
 	return false
+	
+	# emit a signal to indicate player is aligned?
