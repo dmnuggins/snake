@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://vp1h3h0chf40"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dlm0m"]
+[ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="2_segt2"]
+[ext_resource type="Script" path="res://Scripts/Idle.gd" id="3_lvcm2"]
+[ext_resource type="Script" path="res://Scripts/Moving.gd" id="4_rnonh"]
+[ext_resource type="Script" path="res://Scripts/Die.gd" id="5_boc4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tn7ky"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dlm0m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_tn7ky")
+
+[node name="FSM" type="Node" parent="."]
+script = ExtResource("2_segt2")
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("3_lvcm2")
+
+[node name="Moving" type="Node" parent="FSM"]
+script = ExtResource("4_rnonh")
+
+[node name="Die" type="Node" parent="FSM"]
+script = ExtResource("5_boc4t")
