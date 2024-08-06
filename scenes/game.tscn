@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://5gm2ubukyvup"]
 
-[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_64af6"]
-[ext_resource type="PackedScene" uid="uid://vp1h3h0chf40" path="res://Scenes/Player.tscn" id="2_lltrj"]
-[ext_resource type="Texture2D" uid="uid://cuwlh1mvx5xl8" path="res://Assets/Grid-00.png" id="3_diupw"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_csadv"]
+[ext_resource type="PackedScene" uid="uid://vp1h3h0chf40" path="res://Scenes/player.tscn" id="2_24fs1"]
+[ext_resource type="Texture2D" uid="uid://cuwlh1mvx5xl8" path="res://Assets/Grid-00.png" id="3_wd4qt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxpjb"]
-texture = ExtResource("3_diupw")
+texture = ExtResource("3_wd4qt")
 texture_region_size = Vector2i(20, 20)
 0:0/0 = 0
 
@@ -16,9 +16,9 @@ sources/0 = SubResource("TileSetAtlasSource_bxpjb")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a2uht"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_64af6")
+script = ExtResource("1_csadv")
 
-[node name="Player" parent="." instance=ExtResource("2_lltrj")]
+[node name="Player" parent="." instance=ExtResource("2_24fs1")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
