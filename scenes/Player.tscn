@@ -1,10 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://vp1h3h0chf40"]
+[gd_scene load_steps=3 format=3 uid="uid://vp1h3h0chf40"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_dlm0m"]
-[ext_resource type="Script" path="res://Scripts/FSM/finite_state_machine.gd" id="2_segt2"]
-[ext_resource type="Script" path="res://Scripts/FSM/States/idle.gd" id="3_sk4hy"]
-[ext_resource type="Script" path="res://Scripts/FSM/States/moving.gd" id="4_qkdg3"]
-[ext_resource type="Script" path="res://Scripts/FSM/States/die.gd" id="5_ix0me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn7ky"]
 
@@ -20,15 +16,3 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_tn7ky")
-
-[node name="FSM" type="Node" parent="."]
-script = ExtResource("2_segt2")
-
-[node name="Idle" type="Node" parent="FSM"]
-script = ExtResource("3_sk4hy")
-
-[node name="Moving" type="Node" parent="FSM"]
-script = ExtResource("4_qkdg3")
-
-[node name="Die" type="Node" parent="FSM"]
-script = ExtResource("5_ix0me")

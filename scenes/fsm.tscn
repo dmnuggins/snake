@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgpeob1qk4w0q"]
+
+[ext_resource type="Script" path="res://Scripts/FSM/fsm.gd" id="1_08ei8"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/idle.gd" id="2_481pu"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/moving.gd" id="3_n2ftl"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/die.gd" id="4_dcj5a"]
+
+[node name="FSM" type="Node"]
+script = ExtResource("1_08ei8")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_481pu")
+
+[node name="Moving" type="Node" parent="."]
+script = ExtResource("3_n2ftl")
+
+[node name="Die" type="Node" parent="."]
+script = ExtResource("4_dcj5a")
