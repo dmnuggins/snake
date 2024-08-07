@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://vp1h3h0chf40"]
+[gd_scene load_steps=7 format=3 uid="uid://vp1h3h0chf40"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_dlm0m"]
+[ext_resource type="Script" path="res://Scripts/FSM/fsm.gd" id="2_nuktu"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/idle.gd" id="3_mriak"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/moving.gd" id="4_167xu"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/die.gd" id="5_ecet0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn7ky"]
 
@@ -16,3 +20,15 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_tn7ky")
+
+[node name="FSM" type="Node" parent="."]
+script = ExtResource("2_nuktu")
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("3_mriak")
+
+[node name="Moving" type="Node" parent="FSM"]
+script = ExtResource("4_167xu")
+
+[node name="Die" type="Node" parent="FSM"]
+script = ExtResource("5_ecet0")
