@@ -1,9 +1,11 @@
 ## Basic generic finite state machine. Initializes states and delegates engine callbacks
 ## (_physics_process, _unhandled_input) to the active state.
-class_name StateMachine extends Node
+class_name FiniteStateMachine extends Node
 
 ## Emitted right after a state transition.
 signal state_changed()
+
+var player: Player
 
 ## The initial state of the state machine. If not set, the first child node is used.
 @export var initial_state: State = null

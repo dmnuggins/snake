@@ -1,6 +1,9 @@
 class_name Player extends CharacterBody2D
 
-@export var speed = 50.0
+@export var speed = 75.0
+
+@onready var fsm = $FSM
+@onready var state_label = $StateLabel
 
 enum MoveType {
 	VERTICAL,
@@ -21,21 +24,24 @@ var next_direction
 # can be set to the move state
 func _physics_process(delta):
 	
+	# Displays the current state
+	state_label.text = fsm.state.name
+	
 	# Player will move in the direction of the respective action pressed
 	if isAligned():
 		if current_direction != MoveType.VERTICAL:
 			if Input.is_action_pressed("up"):
-				velocity = Vector2(0,-1)
+				velocity = inputs["up"]
 				current_direction = MoveType.VERTICAL
 			elif Input.is_action_pressed("down"):
-				velocity = Vector2(0,1)
+				velocity = inputs["down"]
 				current_direction = MoveType.VERTICAL
 		if current_direction != MoveType.HORIZONTAL:
 			if Input.is_action_pressed("left"):
-				velocity = Vector2(-1,0)
+				velocity = inputs["left"]
 				current_direction = MoveType.HORIZONTAL
 			elif Input.is_action_pressed("right"):
-				velocity = Vector2(1,0)
+				velocity = inputs["right"]
 				current_direction = MoveType.HORIZONTAL
 		
 	# When aligned check here, then set velocity with queued action
@@ -45,11 +51,6 @@ func _physics_process(delta):
 	
 	# Ensures that player interacts with world boundaries
 	move_and_collide(velocity)
-	
-	position = Vector2(round(position.x), round(position.y))
-	
-	if isAligned():
-		print(position)
 
 # Changes the direction of the snake if aligned
 func changeDirection():

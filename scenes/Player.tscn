@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/FSM/fsm.gd" id="2_nuktu"]
 [ext_resource type="Script" path="res://Scripts/FSM/States/idle.gd" id="3_mriak"]
 [ext_resource type="Script" path="res://Scripts/FSM/States/moving.gd" id="4_167xu"]
-[ext_resource type="Script" path="res://Scripts/FSM/States/die.gd" id="5_ecet0"]
+[ext_resource type="Script" path="res://Scripts/FSM/States/dead.gd" id="5_ecet0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn7ky"]
 
@@ -27,8 +27,14 @@ script = ExtResource("2_nuktu")
 [node name="Idle" type="Node" parent="FSM"]
 script = ExtResource("3_mriak")
 
+[node name="Dead" type="Node" parent="FSM"]
+script = ExtResource("5_ecet0")
+
 [node name="Moving" type="Node" parent="FSM"]
 script = ExtResource("4_167xu")
 
-[node name="Die" type="Node" parent="FSM"]
-script = ExtResource("5_ecet0")
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -18.0
+offset_top = 20.0
+offset_right = 38.0
+offset_bottom = 43.0

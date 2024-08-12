@@ -2,8 +2,9 @@
 # Without this, we have to run the game to see typos and other errors the compiler could otherwise catch while scripting.
 class_name PlayerState extends State
 
-const IDLE = "idle"
-const MOVING = "moving"
+const IDLE = "Idle"
+const MOVING = "Moving"
+const DEAD = "Dead"
 
 var player: Player
 
